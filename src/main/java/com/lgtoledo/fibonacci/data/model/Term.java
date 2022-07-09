@@ -5,13 +5,19 @@ import javax.persistence.Id;
 
 @Entity
 public class Term {
-  
+
   @Id
   private Long id;
   private Long value;
 
   public Term() {
   }
+
+  public Term(long id, long value) {
+    this.id = id;
+    this.value = value;
+  }
+  
 
   public Long getId() {
     return id;
@@ -29,4 +35,8 @@ public class Term {
     this.value = value;
   }
   
+  @Override
+  public String toString() {
+    return "Term [id=" + id + ", value=" + value + "]";
+  }
 }
