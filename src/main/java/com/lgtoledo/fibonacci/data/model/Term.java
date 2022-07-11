@@ -7,24 +7,24 @@ import javax.persistence.Id;
 public class Term {
 
   @Id
-  private Long id;
+  private Long n;
   private Long value;
 
   public Term() {
   }
 
-  public Term(long id, long value) {
-    this.id = id;
+  public Term(long n, long value) {
+    this.n = n;
     this.value = value;
   }
   
 
-  public Long getId() {
-    return id;
+  public Long getN() {
+    return n;
   }
   
-  public void setId(Long id) {
-    this.id = id;
+  public void setN(Long n) {
+    this.n = n;
   }
 
   public Long getValue() {
@@ -35,8 +35,4 @@ public class Term {
     this.value = value;
   }
   
-  @Override
-  public String toString() {
-    return "Term [id=" + id + ", value=" + value + "]";
-  }
 }

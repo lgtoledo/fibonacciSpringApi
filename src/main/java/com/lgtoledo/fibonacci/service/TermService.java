@@ -31,7 +31,7 @@ public class TermService {
     if (n == 0) return 0;
     if (n == 1) return 1;
 
-    Optional<Term> term = repository.findById(n);
+    Optional<Term> term = repository.findByN(n);
     if (term.isPresent()) {
       return term.get().getValue();
     }
