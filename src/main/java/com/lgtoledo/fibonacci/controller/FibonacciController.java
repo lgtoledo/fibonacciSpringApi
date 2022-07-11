@@ -18,7 +18,7 @@ import com.nimbusds.jose.shaded.json.JSONObject;
 public class FibonacciController {
   
   @Autowired
-  TermService termService;
+  private TermService termService;
 
   @GetMapping(value="/{n}", produces="application/json")
   public Term fibonacci(@PathVariable int n) throws Exception {
