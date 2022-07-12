@@ -1,5 +1,6 @@
 package com.lgtoledo.fibonacci.service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -9,15 +10,25 @@ import org.springframework.stereotype.Service;
 
 import com.lgtoledo.fibonacci.data.model.Term;
 import com.lgtoledo.fibonacci.data.repository.TermRepository;
+import com.lgtoledo.fibonacci.data.model.Metric;
 
 @Service
 public class TermService {
+
   @Autowired
   private TermRepository repository;
 
+  @Autowired
+  private MetricService metricService;
+
   @Transactional
   public Term getTerm(long n) {
-    return new Term(n, calcFibonacci(n));
+    
+    Term term = new Term(n, calcFibonacci(n));
+
+    metricService.save(new Metric(n, LocalDateTime.now()));
+
+    return term;
   }
 
   @Transactional
@@ -40,7 +51,6 @@ public class TermService {
     long value = calcFibonacci(n-1) + calcFibonacci(n-2);
     Term t = new Term(n, value);
     repository.save(t);
-
     return value;
   }
   
