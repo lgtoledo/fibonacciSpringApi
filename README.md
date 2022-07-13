@@ -10,7 +10,7 @@ para el n-esimo término de la sucesión de fibonacci.
 Se utiliza una base de datos relacional para almacenar los valores intermedios calculados, con
 el fin de mejorar los tiempos de respuesta en futuras llamadas al endpoint.
 
-Para que se logre apreciar mejor el efecto de mejora del tiempo de respuesta durante sucesivas invocaciones, el algoritmo de cálculo se desarrolló con funciones recursivas, lo cual requiere un tiempo que crece de manera exponencial con relación a n cuando necesita calcular el término, es decir, si aún no existe en la base de datos.
+Para que se logre apreciar el efecto de mejora del tiempo de respuesta durante sucesivas invocaciones, el algoritmo de cálculo se desarrolló con funciones recursivas, lo cual requiere un tiempo que crece de manera exponencial con relación a n cuando necesita calcular el término, es decir, si aún no existe en la base de datos.
 
 ## Estadísticas
 
