@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.lgtoledo.fibonacci.data.model.Term;
+import com.lgtoledo.fibonacci.service.MetricService;
 import com.lgtoledo.fibonacci.service.TermService;
 import com.nimbusds.jose.shaded.json.JSONObject;
 
@@ -18,6 +19,9 @@ public class FibonacciController {
   
   @Autowired
   private TermService termService;
+
+  @Autowired
+  private MetricService metricService;
 
   @GetMapping(value="/{n}", produces="application/json")
   public Term fibonacci(@PathVariable int n) throws Exception {
@@ -38,6 +42,7 @@ public class FibonacciController {
   public String reset() {
     try {
       this.termService.reset();
+      this.metricService.reset();
       JSONObject entity = new JSONObject();
       entity.put("message", "Contenido de la Base de datos borrado correctamente");
       return entity.toJSONString();
