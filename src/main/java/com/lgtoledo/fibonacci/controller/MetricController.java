@@ -1,8 +1,6 @@
 package com.lgtoledo.fibonacci.controller;
 
-import java.math.BigInteger;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 import org.apache.commons.collections4.IterableUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lgtoledo.fibonacci.data.model.Metric;
 import com.lgtoledo.fibonacci.data.queryDto.MetricFrequencyDto;
 import com.lgtoledo.fibonacci.service.MetricService;
-import com.nimbusds.jose.shaded.json.JSONArray;
 import com.nimbusds.jose.shaded.json.JSONObject;
 
 @RestController
