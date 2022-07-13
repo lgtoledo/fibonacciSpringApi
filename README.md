@@ -17,9 +17,12 @@ Para que se logre apreciar el efecto de mejora del tiempo de respuesta durante s
 Adicional a lo anterior, con cada solicitud al endpoint de la sucesión de fibonacci, se almacena en una tabla de Métricas
 el término n solicitado, así como el Timestamp. Eso posibilita obtener datos estadísticos sobre los términos más solicitados, así como realizar gráficas con su distribución temporal.
 
+## Testing
+Se crean pruebas automatizadas End2End para comprobar las tres capas Controller-Servicios-Datos, lo cual permite comprobar el correcto funcionamiento de la aplicación. En este caso, la base de datos utilizada para las pruebas es una BD en memoria (H2).
+
 ## Despliegue
 
-La aplicación se despliega en la nube de Azure, al igual que la base de datos MySQL v5.7
+Tanto la aplicación como la base de datos MySQL se despliegan en los respectivos servicios de la nube de Azure.
 
 # REST API
 
