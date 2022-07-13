@@ -14,7 +14,7 @@ public class MetricService {
   @Autowired
   private MetricRepository repository;
 
-  public Iterable<Metric> getMetrics(int nTerm, LocalDateTime start, LocalDateTime end) {
+  public Iterable<Metric> getMetrics(long nTerm, LocalDateTime start, LocalDateTime end) {
     return repository.findBynTermAndTimestampBetween(nTerm, start, end);
   }
 
@@ -22,13 +22,18 @@ public class MetricService {
     return repository.findByTimestampBetween(start, end);
   }
 
-  public Iterable<Metric> getMetrics(int nTerm) {
+  public Iterable<Metric> getMetrics(long nTerm) {
     return repository.findBynTerm(nTerm);
   }
 
   public Iterable<Metric> getMetrics() {
     return repository.findAll();
   }
+  
+  public Iterable<Object> get3MostFrequent(){
+    return repository.find3MostFrequent();
+  }
+
 
   public void reset() {
     repository.deleteAll();
