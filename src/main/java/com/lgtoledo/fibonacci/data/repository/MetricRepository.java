@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import com.lgtoledo.fibonacci.data.model.Metric;
+import com.lgtoledo.fibonacci.data.queryDto.MetricFrequencyDto;
 
 public interface MetricRepository extends CrudRepository<Metric, Long> {
 
@@ -15,7 +16,7 @@ public interface MetricRepository extends CrudRepository<Metric, Long> {
 
   public Iterable<Metric> findBynTermAndTimestampBetween(long nTerm, LocalDateTime start, LocalDateTime end);
 
-  @Query(value = "SELECT n_term, COUNT(n_term) AS freq FROM Metric GROUP BY n_term ORDER BY freq DESC LIMIT 3", nativeQuery = true)
-  public Iterable<Object> find3MostFrequent();
+  @Query(value = "SELECT n_term as nTerm, COUNT(n_term) AS frequency FROM Metric GROUP BY n_term ORDER BY frequency DESC LIMIT 3", nativeQuery = true)
+  public Iterable<MetricFrequencyDto> find3MostFrequent();
 }
 

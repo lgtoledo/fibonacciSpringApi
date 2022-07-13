@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lgtoledo.fibonacci.data.model.Metric;
+import com.lgtoledo.fibonacci.data.queryDto.MetricFrequencyDto;
 import com.lgtoledo.fibonacci.data.repository.MetricRepository;
 
 @Service
@@ -30,7 +31,7 @@ public class MetricService {
     return repository.findAll();
   }
   
-  public Iterable<Object> get3MostFrequent(){
+  public Iterable<MetricFrequencyDto> get3MostFrequent(){
     return repository.find3MostFrequent();
   }
 
