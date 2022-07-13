@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lgtoledo.fibonacci.data.model.Metric;
+import com.lgtoledo.fibonacci.data.queryDto.MetricFrequencyDto;
 import com.lgtoledo.fibonacci.service.MetricService;
 import com.nimbusds.jose.shaded.json.JSONArray;
 import com.nimbusds.jose.shaded.json.JSONObject;
@@ -23,19 +24,11 @@ public class MetricController {
   @Autowired
   private MetricService metricService;
 
-  // Retorna el ranking de los tres terminos mas frecuentes
+  // Retorna el ranking de los tres términos mas frecuentes
   @GetMapping(value="/", produces="application/json")
-  public String getMetrics() {
-    ArrayList<JSONObject> resultsList = new ArrayList<JSONObject>();
-    Iterable<Object> metrics = metricService.get3MostFrequent();
-
-    metrics.forEach(item -> {
-      JSONObject jsonObj = new JSONObject();
-      jsonObj.put("nTerm", ((Object[])item)[0]);
-      jsonObj.put("requests", ((Object[])item)[1]);
-      resultsList.add(jsonObj);
-    });
-    return resultsList.toString();
+  public Iterable<MetricFrequencyDto> getMetrics() {
+    Iterable<MetricFrequencyDto> metrics = metricService.get3MostFrequent();
+    return metrics;
   }
 
   // Retorna las métricas para el n-term especificado
